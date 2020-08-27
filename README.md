@@ -19,7 +19,7 @@ In DAC'2020-SDC, Our design bases on SkyNet (https://github.com/TomG008/SkyNet),
 
   When computing pointwise convolution (PWC), sometimes, 16 input channels is enough. The parallelism of input channel and output channel is regulable, which is very suiltable for MobileNetV2.
   
-3. Share PE an line buf.
+3. Share PE and line buf.
 
   DWC and PWC share PE, which can sppedup DWC and reduce the number of used DSP. Line buf can speedup DWC.
 
