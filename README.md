@@ -9,7 +9,7 @@ Guoqing Li*, Jingwei Zhang*, Ruixia Wu, Jiaojie Li, Feng Lv
 
 li_guopqing@seu.edu.cn
 
-In DAC'2020-SDC, Our design bases on SkyNet (https://github.com/TomG008/SkyNet), the champion design of the 56th IEEE/ACM Design Automation Conference System Design Contest (DAC-SDC). We deliver 72.2% Intersection over Union (IoU), 36.53fps and 8399J energy consumption on Ultra96v2. Our contributions are as follows:
+In DAC'2020-SDC, Our design bases on SkyNet (https://github.com/TomG008/SkyNet), the champion design of the 56th IEEE/ACM Design Automation Conference System Design Contest (DAC-SDC). We deliver 72.2% Intersection over Union (IoU), 36.53fps and 8399J energy consumption on Ultra96v2. The spped is limited by PS. If you can write a better python file, you will get a better result. Our contributions are as follows:
 
 1. Spatial to Channel (S2C)
 
