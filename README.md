@@ -29,4 +29,4 @@ In DAC'2020-SDC, Our design bases on SkyNet (https://github.com/TomG008/SkyNet),
   
 
 
-Furethermoe, we deploy our approaches to Skrskr (https://github.com/jiangwx/SkrSkr), the second place of DAC'2020-SDC, which also based on SkyNet. We achieve 73.1 IOU, 68fps and 5000J.
+Furethermoe, we deploy our approaches to Skrskr (https://github.com/jiangwx/SkrSkr), the second place of DAC'2020-SDC, which also based on SkyNet. We achieve 73.1 IOU, 76fps and 4300J.
