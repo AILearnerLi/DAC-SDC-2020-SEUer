@@ -603,6 +603,7 @@ void CFM(ADT buf[32][43][83]){
 		}
 	}
 }
+//add layer1_done for pre-load workflow
 void SkyNet(ADT16* img, ADT32* fm, WDT32* weight, BDT16* biasm, int layer1_done)
 {
 
@@ -714,7 +715,7 @@ void SkyNet(ADT16* img, ADT32* fm, WDT32* weight, BDT16* biasm, int layer1_done)
             }
         }
     }
-    //layer1_done=2;
+   
     /*********************************DWCONV3+PWCONV3********************************/
     std::cout << "DWCONV3+PWCONV3" << std::endl;
     Load_WBUF3x3(weight + conv5_w, WBUF[0], 0);
@@ -815,7 +816,7 @@ void SkyNet(ADT16* img, ADT32* fm, WDT32* weight, BDT16* biasm, int layer1_done)
             Export_FM1(fm + conv8_o, FM2, Mx);
         }
     }
-   // layer1_done=4;
+   
     /*********************************DWCONV5+PWCONV5********************************/
     std::cout << "DWCONV5+PWCONV5" << std::endl;
     {
@@ -866,7 +867,7 @@ void SkyNet(ADT16* img, ADT32* fm, WDT32* weight, BDT16* biasm, int layer1_done)
             Export_FM1(fm + conv10_o, FM2, Mx);
         }
     }
-    //layer1_done=5;
+    
     /*********************************REORG+CONCAT+DWCONV6********************************/
     std::cout << "REORG+DWCONV6" << std::endl;
 
@@ -910,7 +911,7 @@ void SkyNet(ADT16* img, ADT32* fm, WDT32* weight, BDT16* biasm, int layer1_done)
 
         }
     }
-    //layer1_done=6;
+    
     /*********************************PWCONV6********************************/
     std::cout << "PWCONV6" << std::endl;
     {
@@ -938,7 +939,7 @@ void SkyNet(ADT16* img, ADT32* fm, WDT32* weight, BDT16* biasm, int layer1_done)
             Export_FM1(fm + conv12_o, FM3, Mx);
         }
     }
-    layer1_done=7;
+    layer1_done=0;
     /*********************************CONV13********************************/
     std::cout << "CONV13" << std::endl;
     for(int Nx=0; Nx<3; Nx++)
