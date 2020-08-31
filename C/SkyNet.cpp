@@ -148,7 +148,7 @@ void LOAD_W1x1(WDT WBUF1x1[32][32], WDT W1x1[32][16], int CI)
 }
 
 
-
+//modify this function, sharepe share weight buf, r-prarlle
 void SHARECONV(const ADT IFM[32][43][83], RDT OFM[32][43][83], WDT WBUF[32][32], uint1 mode, uint1 CI)
 {
 #pragma HLS ARRAY_PARTITION variable=OFM dim=1 complete
@@ -255,7 +255,7 @@ else{
 	}
 }
 }
-
+//modify MAX function, the II of POOL function from 4 to 2 
 ADT MAX(ADT a, ADT b, ADT c, ADT d)
 {
 	ADT t1 = a > b ? a : b;
@@ -293,7 +293,7 @@ void ACTIVATION(RDT IFM[32][43][83], ADT OFM[32][43][83], BDT BBUF[32], MDT MBUF
     }
 }
 
-
+// modify Load_WBUF3x3, reduce LUT and FF
 void Load_WBUF3x3(WDT32* weight, WDT WBUF[32][32], int Mx)
 {
     for(int m=0; m<9; m++)
@@ -555,7 +555,7 @@ void Compute_BBOX(RDT OFM[32][43][83], BDT MBUF[32], BDT16 BBOX[4])
         BBOX[b].range(255,113) = 0;
     }
 }
-
+// modify Load_IMG4 for S2C approach
 void Load_IMG4(ADT16* img, ADT IFM[32][43][83], int Hx, int Wx)
 {
     int h_o = Hx*40-1;
