@@ -30,3 +30,10 @@ In DAC'2020-SDC, Our design bases on SkyNet (https://github.com/TomG008/SkyNet),
 
 
 Furethermoe, we deploy our approaches to Skrskr (https://github.com/jiangwx/SkrSkr), the second place of DAC'2020-SDC, which also based on SkyNet. We achieve 73.1 IOU, 76fps and 4300J.
+
+The performance of Skrskr is better than iSmart3, so we open source our design based on Skrskr.
+
+You need to update the PMIC of Ultra96V2. (https://github.com/AILearnerLi/Ultra96-V2-PMIC-Programming-Update-Procedure). Otherwise, the design cannot run at 300MHz, but can run at 290M.
+
+
+
