@@ -30,7 +30,7 @@ Our contributions are as follows:
   
 3. Share PE and line buf.
 
-  DWC and PWC share PE, which can sppedup DWC and reduce the number of used DSP. Line buf can speedup DWC.
+  DWC and PWC share PE, which can sppedup DWC and reduce the number of used DSP. Line buf can speedup DWC. The weights buffees also can be shared.
 
 4. Workflow
 
