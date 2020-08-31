@@ -258,20 +258,11 @@ else{
 
 ADT MAX(ADT a, ADT b, ADT c, ADT d)
 {
-#pragma HLS INLINE
 	ADT t1 = a > b ? a : b;
 	ADT t2 = c > d ? c : d;
 	return t1 > t2 ? t1 : t2;
 }
 
-ADT MAX2(ADT a[4])
-{
-//#pragma HLS INLINE
-#pragma HLS ARRAY_PARTITION variable=a dim=0 complete
-	ADT T1 = a[0] > a[1] ? a[0] : a[1];
-	ADT T2 = a[2] > a[3] ? a[2] : a[3];
-	return  T1 > T2 ? T1 : T2;
-}
 void ACTIVATION(RDT IFM[32][43][83], ADT OFM[32][43][83], BDT BBUF[32], MDT MBUF[32])
 {
 #pragma HLS INLINE off
@@ -375,38 +366,7 @@ void Load_FM(ADT32* ifm, ADT IFM[32][43][83], int Hx, int Wx, int Cx, int ow, in
         }
     }
 }
-/*
-void POOL(ADT32* fm,  ADT IFM[32][43][83], int Hx, int Wx, int Cx, int ow, int oh)
-{
-#pragma HLS expression_balance
-#pragma HLS ARRAY_PARTITION variable=IFM dim=1 complete
-    int tile = ow/40;
-    int h_o = Hx*20 + Hx/tile;
-    int w_o = Wx*40 + Wx/tile;
-    for (int h=1; h<=20; h++)
-    {
-        for (int w=1; w<=40; w++)
-        {
-#pragma HLS PIPELINE II=2
-            int fm_index = Cx*(oh*2+3)*(ow*2+3) + (h+h_o)*(ow*2+3) + (w+w_o);
-            ADT32 DATA;
 
-            for (int c=0; c<32; c++)
-            {
-            	ADT t1[4];
-#pragma HLS ARRAY_PARTITION variable=IFM dim=1 complete
-            	t1[0] = IFM[c][2*h-1][2*w-1];
-				t1[1] = IFM[c][2*h-1][2*w];
-            	t1[2] = IFM[c][2*h][2*w-1];
-            	t1[3] = IFM[c][2*h][2*w];
-            	ADT t3=MAX2(t1);
-            	DATA.range(8*c+7,8*c) = t3;
-            }
-            fm[fm_index] = DATA;
-        }
-    }
-}
-*/
 void POOL(ADT32* fm, ADT IFM[32][43][83], int Hx, int Wx, int Cx, int ow, int oh)
 {
 #pragma HLS ARRAY_PARTITION variable=IFM dim=1 complete
@@ -811,40 +771,7 @@ void SkyNet(ADT16* img, ADT32* fm, WDT32* weight, BDT16* biasm, int layer1_done)
             }
         }
     }
-/*
-    {
-        for(int Hx=0; Hx<2; Hx++)
-        {
-            for(int Wx=0; Wx<2; Wx++)
-            {
-                for(int Mx=0; Mx<6; Mx++)
-                {
-                	Load_FM(fm + conv5_o, FM1, Hx, Wx, 0, config[7].ow, config[7].oh);
-                	for(int Nx=0; Nx<3; Nx++)
-                    {
-                        if(Nx%2==0)
-						{
-                        	Load_FM(fm + conv5_o, FM2, Hx, Wx, Nx+1, config[7].ow, config[7].oh);
-                        	Load_WBUF1x1(weight + conv6_w, WBUF[0], Mx, Nx, config[8].ic);
-                        	SHARECONV(FM1, FM4, WBUF[0], 1, 1); //yes
-                        }
-                        else{
-                        	Load_FM(fm + conv5_o, FM1, Hx, Wx, Nx+1, config[7].ow, config[7].oh);
-                        	Load_WBUF1x1(weight + conv6_w, WBUF[0], Mx, Nx, config[8].ic);
-                        	SHARECONV(FM2, FM4, WBUF[0], 1, 1); //yes
-                        }
-                    }
-                    Load_BBUF(biasm + conv6_b, BBUF[0], Mx);
-                    Load_BBUF(biasm + conv6_m, MBUF[0], Mx);
-                    ACTIVATION(FM4, FM3, BBUF[0], MBUF[0]);
-                    Export_FM(fm + conv6_o, FM3, Hx, Wx, Mx, config[8].ow, config[8].oh);
-                    POOL(fm + pool3_o, FM3, Hx, Wx, Mx, config[10].ow, config[10].oh);
-                }
-            }
-        }
-    }
-    */
-    //layer1_done=3;
+
     /*********************************DWCONV4+PWCONV4********************************/
     std::cout << "DWCONV4+PWCONV4" << std::endl;
 
@@ -862,32 +789,7 @@ void SkyNet(ADT16* img, ADT32* fm, WDT32* weight, BDT16* biasm, int layer1_done)
             Export_FM1(fm + conv7_o, FM3, Nx);
         }
     }
-/*
-    {	Load_FM1(fm + pool3_o, FM1, 0);
-        for(int Nx=0; Nx<6; Nx++)
-        {
-        	Load_WBUF3x3(weight + conv7_w, WBUF[0], Nx);
-        	Load_BBUF(biasm + conv7_b, BBUF[0], Nx);
-        	Load_BBUF(biasm + conv7_m, MBUF[0], Nx);
-        	if(Nx%2==0)
-        	{
-        		Load_FM1(fm + pool3_o, FM2, Nx+1);
-        		SHARECONV(FM1, FM4, WBUF[0],0, 0);
-				ACTIVATION(FM4, FM3, BBUF[0], MBUF[0]);
-				//Export_FM1(fm + conv7_o, FM3, Nx);
-        	}
-        	else
-        	{
-        		Load_FM1(fm + pool3_o, FM1, Nx+1);
-        		SHARECONV(FM2, FM4, WBUF[0],0, 0);
-				ACTIVATION(FM4, FM3, BBUF[0], MBUF[0]);
 
-				//Export_FM1(fm + conv7_o, FM3, Nx);
-        	}
-        	Export_FM1(fm + conv7_o, FM3, Nx);
-        }
-    }
-*/
     {
         for(int Mx=0; Mx<12; Mx++)
         {
@@ -983,45 +885,7 @@ void SkyNet(ADT16* img, ADT32* fm, WDT32* weight, BDT16* biasm, int layer1_done)
             }
         }
     }
-/*
-    {
-        for(int Nx=0; Nx<6; Nx++)
-        {
-        	REORG(fm + conv6_o, FM1, Nx, 0);
-        	for(int Rx=0; Rx<4; Rx++)
-            {
-                if(Rx%2==0)
-                {
 
-                	REORG(fm + conv6_o, FM2, Nx, Rx+1);
-                	Load_WBUF3x3(weight + conv11_w, WBUF[0], Nx+6*Rx);
-					Load_BBUF(biasm + conv11_b, BBUF[0], Nx+6*Rx);
-					Load_BBUF(biasm + conv11_m, MBUF[0], Nx+6*Rx);
-					SHARECONV(FM1, FM4, WBUF[0],0, 0);
-					ACTIVATION(FM4, FM3, BBUF[0], MBUF[0]);
-
-
-					//Export_FM1(fm + conv11_o, FM3, Nx+6*Rx);
-
-                }
-                else{
-
-                	REORG(fm + conv6_o, FM1, Nx, Rx+1);
-                	Load_WBUF3x3(weight + conv11_w, WBUF[0], Nx+6*Rx);
-					Load_BBUF(biasm + conv11_b, BBUF[0], Nx+6*Rx);
-					Load_BBUF(biasm + conv11_m, MBUF[0], Nx+6*Rx);
-					SHARECONV(FM2, FM4, WBUF[0],0, 0);
-					ACTIVATION(FM4, FM3, BBUF[0], MBUF[0]);
-
-
-					//Export_FM1(fm + conv11_o, FM3, Nx+6*Rx);
-
-                }
-                Export_FM1(fm + conv11_o, FM3, Nx+6*Rx);
-            }
-        }
-    }
-*/
     {
         Load_FM1(fm + conv10_o, FM1, 0);
         for(int Nx=0; Nx<16; Nx++)
