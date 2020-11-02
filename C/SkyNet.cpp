@@ -593,7 +593,7 @@ void DFM(ADT src[32][43][83], ADT dest[32][43][83], int b)
 }
 
 void CFM(ADT buf[32][43][83]){
-	for(int w=1; w<82; w++){
+	for(int w=1; w<43; w++){
 		for (int h=0; h<82; h+=2){
 #pragma HLS PIPELINE
 			for (int c=3; c<32;c++){
