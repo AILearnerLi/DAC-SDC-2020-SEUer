@@ -39,11 +39,10 @@ Our contributions are as follows:
 Some useful tools：
 
 1. conv_bn_fusing.py
-   The conv_bn_fusing file can fuse conv layer and BN layer. You can modify this file to be applied to other networks.
+   The conv_bn_fusing file can fuse conv layer and BN layer. You can modify this file to be applied to other networks. It can convert .weights file to .bin file.
    
 2. The code for quantization is coming.
 
-3. The code for convert .weights file to .bin file is coming.
 
 
 
