@@ -196,5 +196,16 @@ modeltype = 'myfusing'
 backupdir = 'backup'
 save_net('%s/%s.weights' % (backupdir,modeltype),model2)
 
+param_list=[]
+for key, value in model2.state_dict().items():
+    flat_weight = value.contiguous().view(value.numel())
+    param_list.extend(flat_weight.tolist())
+for i in param_list:
+    i = float(i)
+print('param_list',len(param_list))
 
+import struct
+fp = open("myfuing.bin",'wb')
+s = struct.pack('f'*len(param_list), *param_list)
+fp.write(s)
 	
