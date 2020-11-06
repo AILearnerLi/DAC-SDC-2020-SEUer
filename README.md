@@ -36,10 +36,14 @@ Our contributions are as follows:
 
   After the first layer done, the next batch image is put to the right address of DDR, whcih can reduce the time of PL waiting PS.
   
+Some useful tools：
 
+1. conv_bn_fusing.py
+   The conv_bn_fusing file can fuse conv layer and BN layer. You can modify this file to be applied to other networks.
+   
+2. The code for quantization is coming.
 
-
-
+3. The code for convert .weights file to .bin file is coming.
 
 
 
