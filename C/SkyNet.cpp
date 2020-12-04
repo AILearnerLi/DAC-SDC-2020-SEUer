@@ -377,7 +377,7 @@ void POOL(ADT32* fm, ADT IFM[32][43][83], int Hx, int Wx, int Cx, int ow, int oh
     {
         for (int w=1; w<=40; w++)
         {
-#pragma HLS PIPELINE II=4
+#pragma HLS PIPELINE II=2
             int fm_index = Cx*(oh*2+3)*(ow*2+3) + (h+h_o)*(ow*2+3) + (w+w_o);
             ADT32 DATA;
             for (int c=0; c<32; c++)
