@@ -1,3 +1,4 @@
+<!---
 from collections import OrderedDict
 import torch
 import torch.nn as nn
@@ -208,4 +209,4 @@ import struct
 fp = open("myfuing.bin",'wb')
 s = struct.pack('f'*len(param_list), *param_list)
 fp.write(s)
-	
+-->	
