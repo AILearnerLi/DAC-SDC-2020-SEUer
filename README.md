@@ -43,7 +43,7 @@ Some useful tools：
    
 2. The code for quantization is coming.
 -->
-
-
+now, only bitfile. 
+paper has been submitted. code will be open after acceptence.
 
 
