@@ -5,9 +5,9 @@ This is a repository for FPGA-based neural network inference for DAC'2020-SDC.
 
 SEUer Group, ASIC cneter, Southeast University, Nnajing, China
 
-Guoqing Li*, Jingwei Zhang*, Ruixia Wu, Jiaojie Li, Feng Lv
+Guoqing Li*, Jingwei Zhang*, Xinye Cao, Ruixia Wu, Jiaojie Li, Yu Zhang, Feng Lv 
 
-li_guopqing@seu.edu.cn
+li_guopqing@seu.edu.cn   zhangjingwei@seu.edu.cn 
 
 In DAC'2020-SDC, Our design bases on SkyNet (https://github.com/TomG008/SkyNet), the champion design of the 56th IEEE/ACM Design Automation Conference System Design Contest (DAC-SDC), obtained the 6th place. We deliver 72.4% Intersection over Union (IoU), 36.53fps and 8399J energy consumption on Ultra96v2. The spped is limited by PS. If you can write a better python file or using the python file of Srskr (the 2nd place of DAC'2020-SDC, https://github.com/jiangwx/SkrSkr), you will get a better result. 
 
