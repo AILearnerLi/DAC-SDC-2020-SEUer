@@ -1,6 +1,6 @@
-# DAC-SDC-2020-SEUer
+# DAC-SDC-2020&2021-SEUer  
 
-<!--
+
 This is a repository for FPGA-based neural network inference for DAC'2020-SDC. 
 
 SEUer Group, ASIC cneter, Southeast University, Nnajing, China
@@ -42,7 +42,7 @@ Some useful tools：
    The conv_bn_fusing file can fuse conv layer and BN layer. You can modify this file to be applied to other networks. It can convert .weights file to .bin file.
    
 2. The code for quantization is coming.
--->
+
 now, only bitfile. 
 paper has been submitted. code will be open after acceptence.
 
