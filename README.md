@@ -39,7 +39,33 @@ In SEUer1 and SEUer12 Our contributions are as follows:
 # SEUer2022 
 Top 3 design in DAC‘2022-SDC
 coming soon.
-   
+ 
+# cite
+@article{li2022efficient,
+  title={Efficient depthwise separable convolution accelerator for classification and UAV object detection},
+  author={Li, Guoqing and Zhang, Jingwei and Zhang, Meng and Wu, Ruixia and Cao, Xinye and Liu, Wenzhao},
+  journal={Neurocomputing},
+  volume={490},
+  pages={1--16},
+  year={2022},
+  publisher={Elsevier}
+}
 
 
+@inproceedings{li2022iscas,
+  title={An Efficient FPGA Implementation for Real-Time and Low-Power UAV Object Detection},
+  author={Li, Guoqing and Zhang, Jingwei and Zhang, Meng and Corporaal, Henk}
+  booktitle={IEEE International Symposium on Circuits and Systems (ISCAS)},
+  year={2022}
+}
 
+@article{zhang2021efficient,
+  title={Efficient Hardware Optimization Strategies for Deep Neural Networks Acceleration Chip},
+  author={ZHANG, Meng and ZHANG, Jingwei and LI, Guoqing and WU, Ruixia and ZENG, Xiaoyang},
+  journal={电子与信息学报},
+  volume={43},
+  number={6},
+  pages={1510--1517},
+  year={2021},
+  publisher={电子与信息学报}
+}
