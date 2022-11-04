@@ -37,8 +37,7 @@ In SEUer1 and SEUer12 Our contributions are as follows:
   After the first layer done, the next batch image is put to the right address of DDR, whcih can reduce the time of PL waiting PS.
   
 # SEUer2022 
-Top 3 design in DAC‘2022-SDC
-coming soon.
+see (https://github.com/jingweiz-DLA/dac_sdc_2022_champion)
  
 # cite
 @article{li2022efficient,
